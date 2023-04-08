@@ -3,7 +3,7 @@
         <span class="title">RCJA Se encuentra apagado</span>
         <div class="encender">
             <span>Encender robot</span>
-            <input type="checkbox" id="switch" /><label for="switch">Toggle</label>
+            <input type="checkbox" id="switch" [(ngModel)]="isChecked"(ngModelChange)="onToggle()" /><label for="switch">Toggle</label>
         </div>
 
     </div>

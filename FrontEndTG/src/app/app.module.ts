@@ -10,6 +10,8 @@ import { AsideComponent } from './shared/aside/aside.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ToolbarComponent } from './shared/toolbar/toolbar.component';
 import { InformationComponent } from './pages/home/information/information.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CentroControlComponent } from './pages/centro-control/centro-control.component';
 
 @NgModule({
   declarations: [
@@ -18,20 +20,24 @@ import { InformationComponent } from './pages/home/information/information.compo
     AsideComponent,
     HomeComponent,
     ToolbarComponent,
-    InformationComponent
+    InformationComponent,
+    CentroControlComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     AngularMaterialModule, 
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports:[
     LoginComponent,
     AsideComponent,
     HomeComponent,
     ToolbarComponent,
-    InformationComponent
+    InformationComponent,
+    CentroControlComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
