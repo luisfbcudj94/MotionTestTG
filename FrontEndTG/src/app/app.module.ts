@@ -12,6 +12,7 @@ import { ToolbarComponent } from './shared/toolbar/toolbar.component';
 import { InformationComponent } from './pages/home/information/information.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CentroControlComponent } from './pages/centro-control/centro-control.component';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { CentroControlComponent } from './pages/centro-control/centro-control.co
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    ToastrModule.forRoot(),
     AngularMaterialModule, 
     FormsModule,
     ReactiveFormsModule

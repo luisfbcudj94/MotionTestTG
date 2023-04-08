@@ -41,6 +41,7 @@ namespace MotionTestApi.Services
                 {
                     if(mod.Id == modo.Id)
                     {
+                        mod.Fecha = DateTime.Now;
                         mod.Activo = modo.Activo;
                     }
                     else
@@ -48,7 +49,7 @@ namespace MotionTestApi.Services
                         mod.Activo = false;
                     }
                 }
-                modo.Fecha = DateTime.Now;
+                
                 await _modosRepository.ActualizarModo(modosActual);
 
                 return Ok(new { mensaje = "Modo actualizado con exito" });

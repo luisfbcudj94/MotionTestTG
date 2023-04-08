@@ -1,8 +1,7 @@
 <div class="container-control">
     <div class="prender-robot">
-        <span class="title">RCJA Se encuentra apagado</span>
+        <span class="title">RCJA Se encuentra <b *ngIf="!isChecked">Apagado</b> <b *ngIf="isChecked">Encendido</b> </span>
         <div class="encender">
-            <span>Encender robot</span>
             <input type="checkbox" id="switch" [(ngModel)]="isChecked"(ngModelChange)="onToggle()" /><label for="switch">Toggle</label>
         </div>
 

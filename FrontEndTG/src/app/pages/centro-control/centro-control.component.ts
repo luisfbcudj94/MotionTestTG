@@ -1,19 +1,51 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Observable, forkJoin } from 'rxjs';
 import { ModosModel } from 'src/app/models/ModosModel';
 import { ModosService } from 'src/app/services/modos.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-centro-control',
   templateUrl: './centro-control.component.html',
 })
-export class CentroControlComponent {
+export class CentroControlComponent implements OnInit {
 
 
   isChecked: boolean = false; 
 
   constructor(private modosService: ModosService,
-  ) {}
+    private toastr: ToastrService
+    ) {}
+
+  ngOnInit(): void {
+    this.loadData();
+  }
+
+  loadData(){
+    let obs: Observable<any>[] = [];
+    obs.push(this.modosService.GetModoActual());
+
+    forkJoin(obs).subscribe({
+      next: response => {
+        console.log(response)
+        if(response[0] == null){
+          this.isChecked = false
+          console.log("1")
+        }
+        else{
+          this.isChecked = true
+          console.log("2")
+        }
+        console.log(this.isChecked)
+        // this.toastr.success(this.isChecked == true ? "Robot encendido con éxtio" : "Robot apagado con éxito");
+      },
+      error: err => {
+        console.log(err);
+        this.toastr.error(err);
+      }
+    });
+
+  }
 
   onToggle() {
     console.log('Cambio de estado del checkbox: ', this.isChecked);
@@ -23,18 +55,17 @@ export class CentroControlComponent {
       Activo: this.isChecked
     }
 
-    let obs: Observable<ModosModel>[] = [];
+    let obs: Observable<any>[] = [];
     obs.push(this.modosService.ActualizarModo(modo));
 
     forkJoin(obs).subscribe({
       next: response => {
         console.log(response)
-        // this.spinner.hide();
+        this.toastr.success(this.isChecked == true ? "Robot encendido con éxtio" : "Robot apagado con éxito");
       },
       error: err => {
         console.log(err);
-        // this.spinner.hide();
-        // this.toastr.error(err);
+        this.toastr.error(err);
       }
     });
   }

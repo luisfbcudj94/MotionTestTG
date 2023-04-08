@@ -8,7 +8,7 @@ import { HttpClient, HttpStatusCode } from '@angular/common/http';
 })
 export class ModosService {
 
-  urlApiTG = ''
+  urlApiTG = 'http://localhost:7175/api'
 
   constructor(private http: HttpClient) { }
 
@@ -16,6 +16,11 @@ export class ModosService {
   public ActualizarModo(request: ModosModel): Observable<any> {
     const url = `${this.urlApiTG}/ActualizarModo`;
     return this.http.put(url, request);
+  }
+
+  public GetModoActual(): Observable<any> {
+    const url = `${this.urlApiTG}/GetModoActual`;
+    return this.http.get(url);
   }
 
 }
