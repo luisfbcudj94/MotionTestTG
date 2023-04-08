@@ -1,4 +1,132 @@
 /* You can add global styles to this file, and also import other style files */
 
+$azul-claro: #00BFD7;
+$azul-oscuro: #004E59;
+
+input{
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: inherit;
+    border: 1px solid #004E59;
+    height: 25px;
+    border-radius: 5px;
+}
+
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.white-button{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    gap: 10px;
+    padding: 5px 22px 5px 22px;
+    font-size: 14px;
+    line-height: 21px;
+    color: $azul-oscuro;
+    background-color: #FFFFFF;
+    height: fit-content;
+    transition: 200ms all;
+    border: 1px solid $azul-oscuro !important;
+    cursor: pointer;
+    &:hover {
+        background-color: $azul-claro;
+        border-color: $azul-oscuro;
+        color: white;
+    }
+}
+
+.blue-claro-button{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    gap: 10px;
+    padding: 5px 22px 5px 22px;
+    font-size: 14px;
+    line-height: 21px;
+    color: $azul-oscuro;
+    background-color: $azul-claro;
+    height: fit-content;
+    transition: 200ms all;
+    border: none !important;
+    cursor: pointer;
+    &:hover {
+        background-color: $azul-oscuro;
+        color: white;
+    }
+}
+
+
+.container-login {
+    position: relative; 
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 40% 60%;
+  }
+  
+  .container-login::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('./assets/UniversidadEIA_entrada.jpeg');
+    background-size: cover;
+    filter: blur(3px);
+    opacity: 0.8;
+  }
+  
+  .container-logo {
+    position: relative;
+    z-index: 1; 
+  }
+  
+  .container-form-login {
+    position: relative; 
+    z-index: 1; 
+    filter: none; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    form{
+        width: 70%;
+        height: 60%;
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0px 0px 18px 2px rgba(0,0,0,0.7);
+        border-radius: 10px;
+
+        .container-input{
+            display: flex;
+            flex-direction: column;
+            width: 70%;
+            margin-top: 20px;
+        }
+
+        .container-buttons{
+            width: 70%;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            button{
+                width: 70%;
+            }
+        }
+
+
+    }
+  }
+  
