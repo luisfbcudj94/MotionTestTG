@@ -49,11 +49,25 @@ namespace MotionTestApi.Repositories
             }
         }
 
-        public List<Puntos> GetPuntosByIds(int[] puntos)
+        public List<Puntos> GetPuntosByIds(List<int> puntos)
         {
             try
             {
                 List<Puntos> listaPuntos =  _context.Puntos.Where(r => puntos.Contains(r.Id)).ToList();
+
+                return listaPuntos;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public List<Puntos> GetPuntosById(int puntoId)
+        {
+            try
+            {
+                List<Puntos> listaPuntos = _context.Puntos.Where(r => r.Id == puntoId).ToList();
 
                 return listaPuntos;
             }

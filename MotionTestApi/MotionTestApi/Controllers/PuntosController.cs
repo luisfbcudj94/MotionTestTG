@@ -37,7 +37,6 @@ namespace MotionTestApi.Controllers
             }
             catch (Exception ex)
             {
-
                 throw new Exception(ex.Message);
             }
         }
@@ -55,30 +54,20 @@ namespace MotionTestApi.Controllers
             }
             catch (Exception ex)
             {
-
                 throw new Exception(ex.Message);
             }
         }
 
-        //[FunctionName("GetPuntosByIds")]
-        //public async Task<IActionResult> GetPuntosByIds(
-        //    [HttpTrigger(AuthorizationLevel.Function, "get", Route = null)] int[] idTest)
-        //{
-
-        //  return Ok(new { idTest = idTest });
-
-        //}
-
-        [FunctionName("GetTest")]
-        public List<Puntos> GetTest(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = null)] HttpRequest req,
-                ILogger log)
+        [FunctionName("GetPuntosById")]
+        public async Task<IActionResult> GetPuntosById(
+            [HttpTrigger(AuthorizationLevel.Function, "get", Route = "GetPuntosById/{puntoId}")] HttpRequest req, int puntoId)
         {
-            int[] numeros = {1,2,3,4,5};
 
-            return _puntosService.GetPuntosByIds(numeros);
+            List<Puntos> puntos =  _puntosService.GetPuntosById(puntoId);
+            return Ok(puntos);
 
         }
+
 
     }
 }

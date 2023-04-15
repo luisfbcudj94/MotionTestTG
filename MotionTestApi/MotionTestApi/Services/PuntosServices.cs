@@ -12,10 +12,12 @@ namespace MotionTestApi.Services
     public class PuntosServices: ControllerBase
     {
         private readonly PuntosRepository _puntosRepository;
+        private readonly ModosServices _modosServices;
 
-        public PuntosServices(PuntosRepository puntosRepository)
+        public PuntosServices(PuntosRepository puntosRepository, ModosServices modosServices)
         {
             _puntosRepository = puntosRepository;
+            _modosServices = modosServices;
         }
 
         public async Task GuardarPuntos(Puntos puntos)
@@ -38,6 +40,17 @@ namespace MotionTestApi.Services
                 punto.Fecha = DateTime.Now;
                 await _puntosRepository.ActualizarPunto(punto);
 
+                Modos modo = new Modos
+                {
+                    Id = 8,
+                    Activo = true,
+                    Descripcion = "Ingreso manual de puntos",
+                    SeccionId = 3,
+                    Fecha = DateTime.Now
+                };
+
+                await _modosServices.ActualizarModo(modo);
+
                 return Ok(new { mensaje = "Punto actualizado con exito" });
             }
             catch (Exception ex)
@@ -48,11 +61,24 @@ namespace MotionTestApi.Services
         }
 
 
-        public List<Puntos> GetPuntosByIds(int[] puntos)
+        public List<Puntos> GetPuntosByIds(List<int> puntos)
         {
             try
             {
                 return _puntosRepository.GetPuntosByIds(puntos);
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public List<Puntos> GetPuntosById(int puntoId)
+        {
+            try
+            {
+                return _puntosRepository.GetPuntosById(puntoId);
             }
             catch (Exception ex)
             {

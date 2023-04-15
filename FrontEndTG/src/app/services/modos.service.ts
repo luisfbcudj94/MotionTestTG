@@ -23,4 +23,9 @@ export class ModosService {
     return this.http.get(url);
   }
 
+  public GetModos(): Observable<any> {
+    const url = `${this.urlApiTG}/GetModos`;
+    return this.http.get(url);
+  }
+
 }

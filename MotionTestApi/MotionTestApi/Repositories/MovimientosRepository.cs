@@ -53,7 +53,7 @@ namespace MotionTestApi.Repositories
         {
             try
             {
-                List<int> listaMovimientos = _context.Movimientos.Where(r => r.Id == modoId).Select(r => r.PuntosId).ToList();
+                List<int> listaMovimientos = _context.Movimientos.Where(r => r.ModoId == modoId).Select(r => r.PuntosId).ToList();
 
                 return listaMovimientos;
             }

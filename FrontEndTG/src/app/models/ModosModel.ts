@@ -1,7 +1,7 @@
 export interface ModosModel{
-    Id:number;
-    Activo: boolean;
-    Descripcion?: string;
-    SeccionId?: number;
-    Fecha?: Date;
+    id:number;
+    activo: boolean;
+    descripcion?: string;
+    seccionId?: number;
+    fecha?: Date;
 }

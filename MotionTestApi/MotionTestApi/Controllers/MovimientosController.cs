@@ -61,5 +61,18 @@ namespace MotionTestApi.Controllers
         }
 
 
+        [FunctionName("GetPuntos")]
+        public List<Puntos> GetMovimientosByModoId(
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = null)] HttpRequest req,
+        ILogger log)
+        {
+
+            return _movimientosService.GetMovimientosByModoId();
+
+        }
+
+
+
+
     }
 }
